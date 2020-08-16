@@ -7,8 +7,6 @@ This is essentially an
 [Element.Input.text](https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/Element-Input#text)
 with extra parts to handle showing and filtering a list of options.
 
-Checkout this [Ellie Demo](TODO).
-
 ## Usage
 
 This searchbox stores just enough state to manage itself but does not store
@@ -18,12 +16,9 @@ adheres to one of the core rules of the Elm Architecture: never put functions
 in your `Model` or `Msg` types. So `SearchBox.state` belongs in your model but
 its configuration does not.
 
-As such, a minimal working model looks like:
+Checkout the examples for how to have a searchbox with fixed number of options
+and one with dynamic number.
 
-```elm
-type alias Model a =
-    { selectedOption = Maybe a
-    , searchBoxText = String
-    , searchBox = SearchBox.State
-    }
-```
+While the the input box can be styled however you want, the other parts like
+dropdown box, icons, and colors have no customization right now. If there is
+interest in this package then I'll add support for this.

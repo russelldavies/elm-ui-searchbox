@@ -1,13 +1,23 @@
 module SearchBox exposing
-    ( ChangeEvent(..)
-    , Msg
-    , State
-    , init
-    , input
-    , reset
-    , setLoading
-    , update
+    ( input, State, ChangeEvent(..)
+    , init, update, reset, setLoading
     )
+
+{-|
+
+
+# Definitions
+
+@docs input, State, ChangeEvent
+
+
+# Usage
+
+To control the state transitions.
+
+@docs init, update, reset, setLoading
+
+-}
 
 import Element exposing (..)
 import Element.Background as Background
@@ -20,6 +30,8 @@ import Json.Decode as Decode
 import SearchBox.Icons as Icons
 
 
+{-| The state of the searchbox
+-}
 type alias State =
     { hasFocus : Bool
     , selectionIndex : Int
@@ -27,6 +39,7 @@ type alias State =
     }
 
 
+{-| -}
 init : State
 init =
     { hasFocus = False
@@ -35,6 +48,8 @@ init =
     }
 
 
+{-| Reset the searchbox. You'll want to call this at various points in your workflow.
+-}
 reset : State -> State
 reset state =
     { state
@@ -43,6 +58,8 @@ reset state =
     }
 
 
+{-| Show a loading icon. Useful if you are retrieving a list of options remotely.
+-}
 setLoading : State -> State
 setLoading state =
     { state | loading = True }
@@ -58,12 +75,16 @@ type Msg
     | ChangedIndex Int
 
 
+{-| This is the event that is the `onChange` wraps that you handle in your app's update function.
+-}
 type ChangeEvent a
     = SelectionChanged a
     | TextChanged String
     | SearchBoxChanged Msg
 
 
+{-| Called when you need to update the searchbox's internal state.
+-}
 update : Msg -> State -> State
 update msg state =
     case msg of
@@ -77,6 +98,14 @@ update msg state =
             { state | selectionIndex = newIndex }
 
 
+{-| Use this in a similar way to `Element.Input.text`.
+
+**Note**: `Events.onClick`, `Events.onFocus` and `Events.onLoseFocus` are used
+internally by the date picker. This means, that **your own `Events.onClick`,
+`Events.onFocus` and `Events.onLoseFocus` attributes have no effect and will
+not fire**.
+
+-}
 input :
     List (Attribute msg)
     ->
