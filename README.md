@@ -7,6 +7,8 @@ This is essentially an
 [Element.Input.text](https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/Element-Input#text)
 with extra parts to handle showing and filtering a list of options.
 
+[Demo](https://ellie-app.com/9K7CTJgMNqka1)
+
 ## Usage
 
 This searchbox stores just enough state to manage itself but does not store
