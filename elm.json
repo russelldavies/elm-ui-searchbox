@@ -3,7 +3,7 @@
     "name": "russelldavies/elm-ui-searchbox",
     "summary": "An Elm UI searchbox (searchable autocomplete dropdown)",
     "license": "BSD-3-Clause",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "exposed-modules": [
         "SearchBox"
     ],

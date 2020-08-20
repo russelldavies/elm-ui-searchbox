@@ -1,5 +1,5 @@
 module SearchBox exposing
-    ( input, State, ChangeEvent(..)
+    ( input, State, ChangeEvent(..), Msg
     , init, update, reset, setLoading
     )
 
@@ -8,7 +8,7 @@ module SearchBox exposing
 
 # Definitions
 
-@docs input, State, ChangeEvent
+@docs input, State, ChangeEvent, Msg
 
 
 # Usage
@@ -69,6 +69,8 @@ setLoading state =
 -- UPDATE
 
 
+{-| Message for internal state changes.
+-}
 type Msg
     = GotFocus
     | LostFocus
