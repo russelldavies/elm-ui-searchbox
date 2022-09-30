@@ -163,12 +163,7 @@ input userAttributes config =
             ]
     in
     Input.text (defaultAttributes ++ userAttributes)
-        { onChange =
-            if config.selected == Nothing then
-                config.onChange << TextChanged
-
-            else
-                config.onChange << always (TextChanged config.text)
+        { onChange = config.onChange << TextChanged
         , text =
             Maybe.map config.toLabel config.selected
                 |> Maybe.withDefault config.text
