@@ -158,11 +158,10 @@ input userAttributes config =
             , Events.onLoseFocus <| config.onChange <| SearchBoxChanged LostFocus
             , onKeyDown msgs config.state.selectionIndex filteredOptions
             , htmlAttribute (Html.Attributes.autocomplete False)
-            , below optionsBox
             , inFront icon
             ]
     in
-    Input.text (defaultAttributes ++ userAttributes)
+    Input.text (defaultAttributes ++ userAttributes ++ [ below optionsBox ])
         { onChange =
             if config.selected == Nothing then
                 config.onChange << TextChanged
